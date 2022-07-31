@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="me.png">
+    <link rel="stylesheet" href="{% static 'css/mvp.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mycss.css' %}">
+    <meta charset="utf-8">
+    <meta name="description" content="My description">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 My Diary</title>
+</head>
+
+<body>
+    <main>
+        <section>
+            <header>
+                <div class="mydiv">
+                    <div class="mydiv1">
+                        <h2>
+                            A lone <i>Man </i>with <a href="{% url 'entry-list' %}"><u>his diary</u></a>
+                        </h2>
+                    </div>
+                    <div class="mydiv2">
+                        <p> {% block button %}
+                            <a href="{% url 'entry-create' %}"><i>Add new entry</i></a>
+                            {% endblock %}
+                        </p>
+                    </div>
+                </div>
+
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <div>
+                        <pre>
+                            <code>{{ message }} </code>
+                        </pre>
+                    </div>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </header>
+            {% block content %}
+
+            {% endblock %}
+        </section>
+        <hr>
+        <section>
+            <blockquote>
+                “Try not to become a man of success, but rather try to become a man of value.”
+                <footer><i>― Albert Einstein"</i></footer>
+            </blockquote>
+        </section>
+    </main>
+</body>
+
+</html>

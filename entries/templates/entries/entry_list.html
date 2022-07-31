@@ -1,0 +1,24 @@
+{% extends "entries/base.html" %}
+
+{% block content %}
+{% for entry in entry_list %}
+<aside>
+    <h2 style="color: #2ecc71;">
+        {{ entry.title |title |truncatewords:10 }}
+    </h2>
+    <h3 style=" color: rgb(190, 202, 17);">
+        {{ entry.content|truncatewords:3}}
+    </h3>
+    <p>
+        <a style="text-decoration:underline;" href="{% url 'entry-detail' entry.id %}">
+            get detail
+        </a>
+    </p>
+    <p>
+        <small style="color: rgb(185, 92, 5);">
+            created on : {{ entry.date_created|timesince }}
+        </small>
+    </p>
+</aside>
+{% endfor %}
+{% endblock %}
