@@ -1,6 +1,0 @@
-self.object_list 
-self.object 
-jquery
-diffrentiate loops between python and javascript
-The Django template language
- With {{ form.as_p }} 
