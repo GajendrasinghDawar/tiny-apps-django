@@ -1,0 +1,30 @@
+{% extends "todo/base.html" %}
+
+
+{% block content %}
+<div class="detail-flex">
+
+    <div class="item1">
+        <h1 style="color: #2ecc71;">
+            {{ entry.title |title}}
+        </h1>
+        <p >
+            {{ entry.note |linebreaks |urlize}}
+        </p>
+        <p >
+            <small style="color: rgb(185, 92, 5);">
+                Edited : {{ entry.created_at|date:'Y-m-d H:i' }}
+            </small>
+        </p>
+    </div>
+
+
+    <div class="item2">
+        <p>
+            <a href="{% url 'entry-update' entry.id %}"><button>✍️ Edit</button></a>
+            <a href="{% url 'entry-delete' entry.id %}"><button>⛔ Delete</button></a>
+        </p>
+    </div>
+
+</div>
+{% endblock %}

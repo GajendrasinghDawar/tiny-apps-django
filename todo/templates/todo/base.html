@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/cssReset.css' %}" /> -->
+  
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"> -->
+  <link rel="stylesheet" href="{% static 'css/simplecss.css' %}" />
+    </link>
+
+</head>
+
+<body>
+    <div class="grid-container">
+
+        <header class="header">
+            <nav class="header-flex">
+                <ul class="header-item1">
+                    <h2>
+                        A lone <i>Man </i>with
+                        <a href="{% url 'entry-list' %}"><u>his diary</u></a>
+                    </h2>
+                </ul>
+                <ol class="header-item2">
+                   <li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'entry-create' %}">
+                        <i>Add new entry</i>
+                    </a>
+                    {% endif %}
+                   </li>
+                   <li>
+                   
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}"><i>logout</i></a>
+                    {% endif %}
+                   </li>
+                </ol>
+               
+            </nav>
+
+        </header>
+
+        <main class="main">
+            <div class="">
+                <div class="main-item1">
+                    <p>
+                        {% block button %}
+
+                        {% endblock %}
+                    </p>
+                </div>
+                <div class="main-item2">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h2>{{ message }} </h2>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <section class="main-item3">
+                    {% block content %}
+                    {% endblock %}
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+
+            <section>
+                <blockquote>
+                    “Try not to become a man of success, but rather try to become a man of
+                    value.”
+                    <footer><i>― Albert Einstein"</i></footer>
+                </blockquote>
+            </section>
+        </footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

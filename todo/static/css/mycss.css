@@ -1,0 +1,82 @@
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  max-width: 100%;
+  min-height: 100%;
+}
+.header-flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+  max-width: 100%;
+  min-height: 100%;
+  border: 3px solid;
+
+}
+
+.main-flex div {
+  margin: 8px;
+  padding: 2rem;
+  border-radius: 3px;
+  border: 3px solid;
+}
+.footer {
+  text-align: center;
+}
+
+.detail-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  max-width: 90vw;
+  min-height: 100%;
+  border: 3px solid;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.item2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.item1 {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  font-size: 2.5vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+.item1 p {
+  padding-top: 1rem;
+}
+.item1 h1 {
+  padding-top: 1rem;
+}
+
+.create-div-flex {
+  display: flex;
+
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+.create-div-flex label {
+
+}

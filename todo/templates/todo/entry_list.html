@@ -1,0 +1,28 @@
+{% extends "todo/base.html" %}
+
+
+
+{% block content %}
+<div class='main-flex'>
+{% for entry in entry_list %}
+    <div>
+        <h2 style="color: #2ecc71;">
+            {{ entry.title |title |truncatewords:10 }}
+        </h2>
+        <h3 style=" color: rgb(190, 202, 17);">
+            {{ entry.content|truncatewords:3}}
+        </h3>
+        <p>
+            <a style="text-decoration:underline;" href="{% url 'entry-detail' entry.id %}">
+                <span>get detail</span>
+            </a>
+        </p>
+        <p>
+            <small style="color: rgb(185, 92, 5);">
+                created on : {{ entry.created_at|timesince }}
+            </small>
+        </p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
