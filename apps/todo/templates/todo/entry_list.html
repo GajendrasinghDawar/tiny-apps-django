@@ -1,10 +1,12 @@
-{% extends "todo/base.html" %}
+{% extends "todo/todo_base.html" %}
+
+
 
 
 
 {% block content %}
 <div class='main-flex'>
-{% for entry in entry_list %}
+    {% for entry in entry_list %}
     <div>
         <h2 style="color: #2ecc71;">
             {{ entry.title |title |truncatewords:10 }}

@@ -8,8 +8,8 @@ from rest_framework.authtoken.models import Token
 from rest_framework.parsers import JSONParser
 from rest_framework import generics, permissions
 
-from api.serializers import TodoSerializer, TodoToggleCompleteSerializer
-from todo.models import Entry
+from .serializers import TodoSerializer, TodoToggleCompleteSerializer
+from apps.todo.models import Entry
 
 
 class TodoList(generics.ListAPIView):
@@ -50,7 +50,7 @@ class TodoToggleComplete(generics.UpdateAPIView):
         return Entry.objects.filter(user=user)
 
     def perform_update(self, serializer):
-        serializer.instance.completed = not(serializer.instance.completed)
+        serializer.instance.completed = not (serializer.instance.completed)
         serializer.save()
 
 

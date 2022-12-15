@@ -1,10 +1,12 @@
-{% extends "todo/base.html" %}
+{% extends "todo/todo_base.html" %}
+
+
 
 {% block title %}Login{% endblock %}
 {% block logout %}
 <a href="{% url 'login' %}"><i>login again</i></a>
 {% endblock %}
 {% block content %}
-  <h2>You are logged out</h2>
+<h2>You are logged out</h2>
 
 {% endblock %}
