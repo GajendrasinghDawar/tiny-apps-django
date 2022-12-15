@@ -38,9 +38,17 @@ INSTALLED_APPS += [
     'apps.news',
     'apps.accounts',
 ]
+
+# myportfolio_api
+INSTALLED_APPS += [
+    # My Apps
+    'apps.notes',
+    'rest_framework',
+    'corsheaders',
+]
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

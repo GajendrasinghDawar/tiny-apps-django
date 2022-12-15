@@ -22,3 +22,8 @@ urlpatterns += [
 ]
 # moview review
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# myPortFolio api app
+urlpatterns += [
+    path('myportfolio_api/', include('apps.notes.urls')),
+]
