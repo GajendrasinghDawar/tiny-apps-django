@@ -1,0 +1,12 @@
+{% extends 'movie_base.html' %}
+{% block content %} {% for news in newss %}
+<div class="box">
+  <article class="message">
+    <div class="message-header">
+      <p>{{ news.headline }}</p>
+      <time datetime="2016-1-1">{{news.date}}</time>
+    </div>
+    <div class="message-body">{{ news.body }}</div>
+  </article>
+</div>
+{% endfor %} {% endblock content %}

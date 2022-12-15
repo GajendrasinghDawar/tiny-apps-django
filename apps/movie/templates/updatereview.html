@@ -1,0 +1,22 @@
+{% extends 'movie_base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <p class="title">{{review.movie.title}}</p>
+  </div>
+  <div class="box">
+    <form method="POST">
+      {% csrf_token %} {{form.as_table}}
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Update Review</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

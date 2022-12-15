@@ -1,0 +1,30 @@
+{% extends 'movie_base.html' %}
+
+{% block content %} {% if error %}
+<div class="container">
+  <article class="message is-success">
+    <div class="message-body">
+      <a>
+        <em> <strong>{{ error }}</strong></em>
+      </a>
+    </div>
+  </article>
+  {% endif %}
+  <div class="box">
+    <form method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <div class="control has-icons-left has-icons-right">{{form.as_p }}</div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Login</button>
+        </div>
+        <div class="control">
+          <button class="button is-link is-light">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

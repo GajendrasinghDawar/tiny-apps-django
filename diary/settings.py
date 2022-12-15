@@ -1,6 +1,6 @@
 from .production import *
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +31,16 @@ INSTALLED_APPS = [
     "apps.todo",
     'apps.api'
 ]
+# My movie apps
+INSTALLED_APPS += [
+    # My movie apps
+    'apps.movie',
+    'apps.news',
+    'apps.accounts',
+]
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

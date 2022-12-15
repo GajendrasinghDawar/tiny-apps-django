@@ -1,0 +1,70 @@
+{% extends 'movie_base.html' %}
+
+{% block content %} {% if movie %}
+<div class="container">
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="{{ movie.image.url }}" alt="Placeholder image" />
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{ movie.title }}</p>
+        </div>
+      </div>
+      <div class="content">
+        {{ movie.description }}
+        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      </div>
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+
+  <div class="card">
+    <footer class="card-footer">
+      <a
+        href="{% url 'createreview' movie.id %}"
+        class="card-footer-item button is-primary"
+        >Add Review</a
+      >
+    </footer>
+  </div>
+  {% endif %}
+  <div class="content">
+    <ul class="content">
+      {% for review in reviews %}
+      <li class="box">
+        <p class="title">{{ review.text }}</p>
+        <div class="level">
+          <div class="level-left">
+            <p class="subtitle">
+              <em><strong>Review by :</strong></em> {{ review.user.username }}
+            </p>
+          </div>
+          <div class="level-right">
+            <p class="subtitle"><em>Date :</em> {{ review.date }}</p>
+          </div>
+        </div>
+        {% if user.is_authenticated and user == review.user %}
+        <footer class="card-footer">
+          <a
+            href="{% url 'updatereview' review.id %}"
+            class="card-footer-item button"
+            >Edit
+          </a>
+
+          <a
+            href="{% url 'deletereview' review.id %}"
+            class="card-footer-item button"
+            >Delete
+          </a>
+        </footer>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %} {% endblock content %}

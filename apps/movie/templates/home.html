@@ -1,0 +1,38 @@
+{% extends 'movie_base.html' %}
+
+{% block content %} {% for movie in movies %}
+<div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="{{ movie.image.url}}" alt="Loading Image" />
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{ movie.title }}</strong>
+          <br />
+          {{ movie.description }}
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a
+            href="{% url 'detail' movie.id %}"
+            class="level-item"
+            aria-label="retweet"
+          >
+            <span class="icon is-small"> </span> <kbd>Get Detail</kbd>
+          </a>
+          <a class="level-item" aria-label="like">
+            <span class="icon is-small">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+{% endfor %} {% endblock content %}

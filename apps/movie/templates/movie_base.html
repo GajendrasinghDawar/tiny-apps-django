@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>from_test</title>
+    <style>
+        @import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+    </style>
+    <script src="https://kit.fontawesome.com/c5eaffdf0c.js" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <nav class="navbar has-shadow">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="{% url 'home' %}">
+                <!-- <img src="{% static 'movie/logo.png' %}" /> -->
+                <strong>1/0 = ? 😎</strong>
+            </a>
+            <div class="navbar-burger burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="navbar-item"></div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href="{% url 'signupaccount' %}" class="button is-primary">
+                            <span class="icon is-small">
+                                <i class="fa fa-sign-out"></i>
+                            </span>
+                            <strong>Sign Up</strong>
+                        </a>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logoutaccount' %}" class="button is-dark">
+                            <span class="icon is-small">
+                                <i class="fa fa-user-circle-o"></i>
+                            </span><span>{{user.username}}</span></a>
+
+                        {% else %}
+                        <a href="{% url 'loginaccount' %}" class="button is-danger">
+                            <span class="icon is-small">
+                                <i class="fa fa-user-circle-o"></i>
+                            </span>
+                            <strong>Login</strong>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+        <div class="columns">
+            <div class="column is-4-tablet is-3-desktop is-2-widescreen">
+                <nav class="menu">
+                    <p class="menu-label">
+                        <span class="tag">
+                            Menu
+                        </span>
+                    </p>
+                    <ul class="menu-list">
+                        <li>
+                            <a href="{% url 'home' %}" class="{% if request.path == '/' %}is-active{% endif %}">
+                                <span class="icon">
+                                    <i class="fa fa-tachometer"></i>
+                                </span>
+                                <em><strong>Dashboard</strong></em>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="{% if request.path == '/news/news/' %}is-active{% endif %}"
+                                href="{% url 'news' %}">
+                                <span class="icon">
+                                    <i class="fa fa-book"></i>
+                                </span>
+                                <em><strong>News</strong></em>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> 
+            </div>
+            <div class="column">
+                <nav class="level">
+                    <div class="level-item is-hidden-tablet-only has-text-centered">
+                        <div class="field has-addons">
+                            <p class="control">
+                            <input class="input fas fa-search" type="text"
+                                placeholder="{% if searchTerm %}{{searchTerm}}{% else %}search Movie {%endif %}"/>
+                            </p>
+                        <p class="control ">
+                            <form action="{% url 'home' %}" method="POST">
+                                {% csrf_token %}
+                            <button id="search" class="button bd-search" name="searchMovie">
+                            <i class="fas fa-search"></i></button>
+                            </form>
+                        </p>
+                        </div>
+                    </div>
+                </nav>
+                {% block content %} 
+                <!-- space for child templates -->
+                {% endblock content %}
+            </div>
+        </div>
+    </section>
+</body>
+</html>
