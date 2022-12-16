@@ -27,3 +27,9 @@ urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += [
     path('myportfolio_api/', include('apps.notes.urls')),
 ]
+
+
+# contacts book
+urlpatterns += [
+    path('contacts_book_api/', include('apps.contacts_book.urls')),
+]

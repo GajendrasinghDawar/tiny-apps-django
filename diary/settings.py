@@ -41,11 +41,17 @@ INSTALLED_APPS += [
 
 # myportfolio_api
 INSTALLED_APPS += [
-    # My Apps
     'apps.notes',
     'rest_framework',
     'corsheaders',
 ]
+
+# 'contacts_book',
+
+INSTALLED_APPS += [
+    'apps.contacts_book',
+]
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
