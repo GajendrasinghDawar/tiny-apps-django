@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-from .production import *
+from production import production
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
