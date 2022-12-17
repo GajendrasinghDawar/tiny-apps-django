@@ -1,7 +1,8 @@
 from pathlib import Path
 import os
+import environ
 
-from production import production
+from .production.production import *
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -115,3 +116,8 @@ STATIC_URL = 'static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+env = environ.Env()
+environ.Env.read_env()
+TEST_USER = env('TEST_USER')
+TEST_USER_PASSWORD = env('TEST_USER_PASSWORD')
