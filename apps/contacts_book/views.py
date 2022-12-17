@@ -7,7 +7,7 @@ from rest_framework import filters
 from django.db.models import Q
 
 from .models import Contact
-from .serializers import ContactSerializer
+from .serializers import ContactSerializer, ToggleFaveSerializer
 
 class ContactsList(generics.ListCreateAPIView):
     search_fields = ['first_name', 'last_name']
@@ -36,14 +36,15 @@ class ContactsDetail(generics.RetrieveUpdateDestroyAPIView):
 
 # make toggle for fave button 
 
-# class TodoToggleComplete(generics.UpdateAPIView):
-#     serializer_class = TodoToggleCompleteSerializer
-#     permission_classes = [permissions.IsAuthenticated]
+class ToggleFaveComplete(generics.UpdateAPIView):
+    serializer_class = ToggleFaveSerializer
+    # queryset = Contact.objects.all()
 
-#     def get_queryset(self):
-#         user = self.request.user
-#         return Entry.objects.filter(user=user)
+    def get_queryset(self):
+        print(self.request.query_params)
+        # return Contact.objects.filter(pk=self.kwargs['pk'])
+        return Contact.objects.filter(pk=self.kwargs.get('pk'))
 
-#     def perform_update(self, serializer):
-#         serializer.instance.completed = not (serializer.instance.completed)
-#         serializer.save()
+    def perform_update(self, serializer):
+        serializer.instance.favorite = not (serializer.instance.favorite)
+        serializer.save()

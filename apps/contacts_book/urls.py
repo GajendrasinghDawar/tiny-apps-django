@@ -6,8 +6,9 @@ from . import views
 
 urlpatterns = [
     path('', views.ContactsList.as_view()),
-    path('<int:pk>/', views.ContactsDetail.as_view()), ]
+    path('<int:pk>/', views.ContactsDetail.as_view()),
+    path('togglefave/<int:pk>/', views.ToggleFaveComplete.as_view()),
+]
 
-urlpatterns += [
-    # ... the rest of your URLconf goes here ...
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += [
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

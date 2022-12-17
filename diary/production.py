@@ -1,5 +1,12 @@
 import environ
 
+SECRET_KEY = 'django-insecure-nf5(&_v^9f32&#7s0v8184nk3hwn*1e5xhii24r!it_o)0c(&('
+
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',

@@ -10,11 +10,11 @@ class ContactSerializer(serializers.ModelSerializer):
         fields = '__all__'
         # fields = ['id','first_name','last_name','avatar_image','twitter_handle','avatar_url','note','created']
 
-# toggle fave 
 
-
-# class TodoToggleCompleteSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Entry
-#         fields = ['id']
-#         read_only_fields = ['title', 'note', 'created_at', 'completed']
+# toggle fave
+class ToggleFaveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact
+        fields = ['favorite']
+        read_only_fields = ['id', 'first_name', 'last_name',
+                            'avatar_image', 'twitter_handle', 'avatar_url', 'note', 'created', 'avatar_image']
