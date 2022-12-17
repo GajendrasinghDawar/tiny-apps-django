@@ -1,8 +1,4 @@
-**todo_NoteBook** 
-> Its simple todo NoteBook In Django 😎. 
+# Tiny Django apps
 
-![Preview Image](diary/static/previewImg1.png)
+tiny apps like todo, some api, and bundled in one app dir  In `Django` 😎. 
 
-![Preview Image2](diary/static/previewImg2.png)
-
-![Preview Image3](diary/static/previewImg3.png)
